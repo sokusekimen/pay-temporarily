@@ -1,2 +1,14 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<h1>グループ新規作成</h1>
+
+<%= form_for(@group, url: groups_path) do |f| %>
+  <%= f.label :name, "グループ名" %><br>
+  <%= f.text_field :name, id: :group_name %><br>
+  <%= f.label :description, "グループの説明" %><br>
+  <%= f.text_area :description, id: :group_description %><br>
+  <%= f.hidden_field :owner, id: :group_owner %><br><!-- group.owner -->
+
+  <%= f.label :メンバー %><br>
+  <%= f.collection_check_boxes :user_ids, User.all, :id, :username %><br>
+  <%= f.submit "作成する" %>
+<% end %>
+<%= link_to '戻る', root_path %>

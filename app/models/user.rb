@@ -3,6 +3,7 @@ class User < ApplicationRecord
   :lockable, :timeoutable
   # :confirmable
 
+  has_many :posts, dependent: :delete_all
+  has_many :group_users, dependent: :delete_all
   has_many :groups, through: :group_users
-  has_many :group_users
 end

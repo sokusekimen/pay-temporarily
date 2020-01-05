@@ -1,2 +1,10 @@
 <h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<h2>グループ名：<%= @group.name %></h2>
+<h2>グループ説明：<%= @group.description %></h2>
+<h2>オーナーID：<%= @group.owner %></h2>
+<h2>グループメンバーID：<br>
+  <% @group.users.each do |user| %>
+    <p><%= user.id %></p>
+    <p><%= user.username %></p>
+  <% end %>
+</h2>
