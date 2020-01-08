@@ -2,9 +2,9 @@
 <h2>グループ名：<%= @group.name %></h2>
 <h2>グループ説明：<%= @group.description %></h2>
 <h2>オーナーID：<%= @group.owner %></h2>
-<h2>グループメンバーID：<br>
+<h2>グループメンバーID：</h2>
   <% @group.users.each do |user| %>
+    <p>----------------</p>
     <p><%= user.id %></p>
     <p><%= user.username %></p>
   <% end %>
-</h2>

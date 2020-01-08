@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(group_params)
+    @group = Group.new(group_params)
     if @group.save
       redirect_to @group, notice: 'グループ作成ができました'
     else
@@ -46,7 +46,8 @@ class GroupsController < ApplicationController
   end
 
   def group_member_user?
-    unless @group.owner == current_user.id 
+    member = @group.users.find_by(id: current_user.id)
+    if member.nil?
       redirect_to root_path, alert: 'メンバーではないグループです'
     end
   end
