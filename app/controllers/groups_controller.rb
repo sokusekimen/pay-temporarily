@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    if @group.destroy(group_params)
+    if @group.destroy
       redirect_to root_path, notice: 'グループの削除できました'
     else
       redirect_to root_path, alert: 'グループの削除できませんでした'

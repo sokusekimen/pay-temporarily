@@ -1,10 +1,11 @@
 <h1>Groups#show</h1>
-<h2>グループ名：<%= @group.name %></h2>
-<h2>グループ説明：<%= @group.description %></h2>
-<h2>オーナーID：<%= @group.owner %></h2>
-<h2>グループメンバーID：</h2>
-  <% @group.users.each do |user| %>
-    <p>----------------</p>
-    <p><%= user.id %></p>
-    <p><%= user.username %></p>
-  <% end %>
+<p>グループ名：<%= @group.name %></p>
+<p>グループ説明：<%= @group.description %></p>
+<p>オーナーID：<%= @group.owner %></p>
+<p>▼グループメンバー</p>
+<% @group.users.each do |user| %>
+  <p>----------------</p>
+  <p>ID:<%= user.id %><br>name:<%= user.username %></p>
+<% end %>
+<%= link_to '編集', edit_group_path %>
+<%= link_to '削除', group_path, method: :delete %>
