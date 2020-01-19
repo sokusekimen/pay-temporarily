@@ -1,11 +1,24 @@
 <h1>Groups#show</h1>
+<h2>▼グループ詳細</h2>
 <p>グループ名：<%= @group.name %></p>
 <p>グループ説明：<%= @group.description %></p>
 <p>オーナーID：<%= @group.owner %></p>
-<p>▼グループメンバー</p>
+<p>・グループメンバー</p>
 <% @group.users.each do |user| %>
-  <p>----------------</p>
   <p>ID:<%= user.id %><br>name:<%= user.username %></p>
+  <p>----------------</p>
 <% end %>
 <%= link_to '編集', edit_group_path %>
 <%= link_to '削除', group_path, method: :delete %>
+<h2>▼投稿</h2>
+<p>・一覧</p>
+<% @posts.each do |post| %>
+<p>ID:<%= post.id %>
+  <br>title:<%= link_to post.title, group_post_path(@group.id, post.id) %>
+  <br>memo:<%= post.description %>
+  <br>total price:<%= post.total_price %> 円</p>
+  <%= link_to '編集', edit_group_post_path(@group.id, post.id) %>
+  <%= link_to '削除', group_post_path(@group.id, post.id), method: :delete %>
+  <p>----------------</p>
+<% end %>
+<%= link_to '投稿', new_group_post_path(@group) %>

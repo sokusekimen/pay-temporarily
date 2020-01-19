@@ -1,9 +1,10 @@
 class GroupsController < ApplicationController
-    before_action :find_group, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
+    before_action :find_group, only: [:show, :edit, :update, :destroy]
     before_action :group_member_user?, only: [:show, :edit, :update, :destroy]
 
   def show
+    @posts = Post.where(group_id: @group.id)
   end
 
   def new

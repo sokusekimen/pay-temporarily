@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @posts = Post.all
@@ -10,6 +11,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @group = Group.find(params[:group_id])
   end
 
   def edit

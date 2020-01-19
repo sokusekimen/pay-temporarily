@@ -1,4 +1,6 @@
 <h1>Posts#show</h1>
 <p><%= @post.title %></p>
+<p><%= @post.description %></p>
+<p><%= @post.total_price %> 円</p>
 <%= link_to '編集', edit_group_post_path %>
 <%= link_to '削除', group_post_path, method: :delete %>
