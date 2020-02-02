@@ -1,4 +1,5 @@
 <h1>こんにちは</h1>
 <p><%= @user.id %></p>
 <p><%= @user.username %></p>
+
 <%= link_to "フレンド申請", page_friend_requests_path(@user), method: :post  %>
