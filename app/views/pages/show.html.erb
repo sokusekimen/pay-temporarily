@@ -1,5 +1,4 @@
-<h1>こんにちは、<%= current_user.username %>さん</h1>
-<p>▼グループ一覧</p>
-<% @groups.each do |group| %>
-  <P><%= link_to group.name, group_path(group) %></P>
-<% end %>
+<h1>こんにちは</h1>
+<p><%= @user.id %></p>
+<p><%= @user.username %></p>
+<%= link_to "フレンド申請", page_friend_requests_path(@user), method: :post  %>

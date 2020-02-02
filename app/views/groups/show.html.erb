@@ -5,7 +5,7 @@
 <p>オーナーID：<%= @group.owner %></p>
 <p>・グループメンバー</p>
 <% @group.users.each do |user| %>
-  <p>ID:<%= user.id %><br>name:<%= user.username %></p>
+  <%= link_to user.id, page_path %>
   <p>----------------</p>
 <% end %>
 <%= link_to '編集', edit_group_path %>
