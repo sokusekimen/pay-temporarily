@@ -2,4 +2,8 @@
 <p><%= @user.id %></p>
 <p><%= @user.username %></p>
 
-<%= link_to "フレンド申請", page_friend_requests_path(@user), method: :post  %>
+<% if @user.requested?(current_user) %>
+  <p><%=link_to "申請済み", page_friend_requests_path(@user.id), method: :delete %></p>
+<% else %>
+  <p><%=link_to "フレンド申請する", page_friend_requests_path(@user.id), method: :post %></p>
+<% end %>

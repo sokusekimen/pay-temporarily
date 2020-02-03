@@ -13,7 +13,13 @@ class User < ApplicationRecord
   has_many :passive_requests, class_name: "FriendRequest", foreign_key: :to_user_id
   has_many :requests, through: :passive_requests, source: :from_user
 
+  has_many :friendships, class_name: "Friendship", foreign_key: :user_id
+  has_many :friends, through: :friendships, source: :friend_id
+  has_many :reverse_of_friendships, class_name: "Friendship", foreign_key: :friend_id
+  has_many :reverse_of_friends, through: :reverse_of_friendships, source: :user_id
+
   def requested?(user)
     passive_requests.find_by(from_user: user.id).present?
   end
+
 end

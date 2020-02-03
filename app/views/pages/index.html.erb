@@ -3,3 +3,6 @@
 <% @groups.each do |group| %>
   <P><%= link_to group.name, group_path(group) %></P>
 <% end %>
+
+<p><%=link_to "フレンド申請中一覧",  requestings_page_path(current_user.id) %></p>
+<p><%=link_to "フレンド申請されている一覧", requests_page_path(current_user.id) %></p>
