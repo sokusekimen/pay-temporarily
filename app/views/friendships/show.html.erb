@@ -1,0 +1,7 @@
+<h1>フレンド一覧</h1>
+
+<% @user_friends.each do |user| %>
+  <hr>
+  <p><span>name: </span><%= link_to user.username, page_path(user.id) %></p>
+  <p><span>email: </span><%= link_to user.email, page_path(user.id) %></p>
+<% end %>

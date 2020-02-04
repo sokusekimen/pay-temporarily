@@ -1,11 +1,8 @@
-<h1>Pages#requests</h1>
+<h1>申請されているリクエスト一覧</h1>
 
 <% @users.each do |user| %>
   <hr>
+  <p><span>name: </span><%= link_to user.username, page_path(user.id) %></p>
   <p><span>email: </span><%= link_to user.email, page_path(user.id) %></p>
-  <% if user.requested?(current_user) %>
-      <p><%=link_to "申請済み", page_friend_requests_path(user.id), method: :delete %></p>
-  <% else %>
-      <p><%=link_to "フレンド申請する", page_friend_requests_path(user.id), method: :post %></p>
-  <% end %>
+  <p><%=link_to "フレンドになる", page_friendships_path(user.id), method: :post %></p>
 <% end %>

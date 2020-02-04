@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!
   before_action :find_groups_user_in, only: :index
   before_action :is_logged_in_user, only: :show
 

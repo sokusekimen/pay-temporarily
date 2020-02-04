@@ -1,4 +1,5 @@
 class FriendRequestsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     request = current_user.active_requests.build(to_user_id: params[:page_id])

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :friend_requests, only: [:create, :destroy]
     get :requestings, on: :member
     get :requests, on: :member
+    resource :friendships, only: [:show, :create, :destroy]
   end
   resources :groups, except: :index do
     resources :posts
