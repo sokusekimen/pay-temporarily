@@ -11,9 +11,8 @@ class FriendshipsController < ApplicationController
 
     from_friendship = current_user.friendships.build(friend_id: to_friend.id)
     to_friendship = to_friend.friendships.build(friend_id: current_user.id)
-    request = current_user.active_requests.find_by(to_user_id: to_friend.id)
-    
-    binding.pry
+    request = to_friend.active_requests.find_by(to_user: current_user.id)
+
     if from_friendship.save && to_friendship.save && request.destroy
       redirect_to page_friendships_path(current_user.id)
     else
