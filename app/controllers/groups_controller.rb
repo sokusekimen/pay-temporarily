@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
     before_action :group_member_user?, only: [:show, :edit, :update, :destroy]
 
   def show
-    @posts = Post.where(group_id: @group.id)
+    @posts = @group.posts
   end
 
   def new
