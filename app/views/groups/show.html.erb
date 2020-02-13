@@ -1,9 +1,9 @@
-<h1>Groups#show</h1>
-<h2>▼合計金額</h2>
+<h1 class="uk-h1">Groups#show</h1>
+<h2 class="uk-h2">▼合計金額</h2>
 <p><%= sum_total_price(params[:id]) %>円</p>
-<h2>▼1人あたりの金額</h2>
+<h2 class="uk-h2">▼1人あたりの金額</h2>
 <p><%= equally(params[:id]) %>円</p>
-<h2>▼グループ詳細</h2>
+<h2 class="uk-h2">▼グループ詳細</h2>
 <p>グループ名：<%= @group.name %></p>
 <p>グループ説明：<%= @group.description %></p>
 <p>オーナーID：<%= @group.owner %></p>
@@ -14,7 +14,7 @@
 <% end %>
 <%= link_to '編集', edit_group_path %>
 <%= link_to '削除', group_path, method: :delete %>
-<h2>▼投稿</h2>
+<h2 class="uk-h2">▼投稿</h2>
 <p>・一覧</p>
 <% @posts.each do |post| %>
 <p>ID:<%= post.id %>

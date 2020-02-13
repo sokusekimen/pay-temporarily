@@ -6,6 +6,13 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/css/uikit.min.css" />
+
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit-icons.min.js"></script>
+
   <%= javascript_pack_tag 'application' %>
   <%= stylesheet_pack_tag 'application' %>
 </head>
@@ -14,21 +21,27 @@
   <header>
     <nav>
       <% if user_signed_in? %>
-        <strong><%= link_to current_user.username, root_path %></strong>
-        <%= link_to 'グループ作成', new_group_path %>
-        <%= link_to 'プロフィール変更', edit_user_registration_path %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <strong><%= link_to current_user.username, root_path %></strong>
+      <%= link_to 'グループ作成', new_group_path %>
+      <%= link_to 'プロフィール変更', edit_user_registration_path %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to 'サインアップ', new_user_registration_path %>
-        <%= link_to 'ログイン', new_user_session_path %>
+      <%= link_to 'サインアップ', new_user_registration_path %>
+      <%= link_to 'ログイン', new_user_session_path %>
       <% end %>
     </nav>
   </header>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  
+  <div class="uk-alert-success" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p class="notice"><%= notice %></p>
+  </div>
+  <div class="uk-alert-danger" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p class="alert"><%= alert %></p>
+  </div>
 
   <%= yield %>
-
 </body>
 
 </html>
