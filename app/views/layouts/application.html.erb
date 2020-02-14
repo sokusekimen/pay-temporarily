@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
-  <title>PayTemporarily</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title><%= page_title %></title>
+  <meta name="description" content="立て替えを管理するアプリです。" />
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <!-- UIkit CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/css/uikit.min.css" />
-
   <!-- UIkit JS -->
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.1/dist/js/uikit-icons.min.js"></script>
@@ -19,29 +23,15 @@
 
 <body>
   <header>
-    <nav>
-      <% if user_signed_in? %>
-      <strong><%= link_to current_user.username, root_path %></strong>
-      <%= link_to 'グループ作成', new_group_path %>
-      <%= link_to 'プロフィール変更', edit_user_registration_path %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-      <% else %>
-      <%= link_to 'サインアップ', new_user_registration_path %>
-      <%= link_to 'ログイン', new_user_session_path %>
-      <% end %>
-    </nav>
+    <%= render "shared/nav" %>
   </header>
-  
-  <div class="uk-alert-success" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p class="notice"><%= notice %></p>
-  </div>
-  <div class="uk-alert-danger" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p class="alert"><%= alert %></p>
+
+  <%= render "shared/flash" %>
+
+  <div class="uk-section uk-section-muted">
+    <%= yield %>
   </div>
 
-  <%= yield %>
 </body>
 
 </html>
