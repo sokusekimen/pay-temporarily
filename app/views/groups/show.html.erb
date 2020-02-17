@@ -1,18 +1,17 @@
 <% @page_title = @group.name %>
 
-<h1 class="uk-h1">Groups#show</h1>
+<h1 class="uk-h1"><%= @group.name %></h1>
 <h2 class="uk-h2">▼合計金額</h2>
 <p><%= sum_total_price(params[:id]) %>円</p>
 <h2 class="uk-h2">▼1人あたりの金額</h2>
 <p><%= equally(params[:id]) %>円</p>
 <h2 class="uk-h2">▼グループ詳細</h2>
-<p>グループ名：<%= @group.name %></p>
 <p>グループ説明：<%= @group.description %></p>
 <p>オーナーID：<%= @group.owner %></p>
 <p>・グループメンバー</p>
 <% @group.users.each do |user| %>
-  <%= link_to user.id, page_path(user.id) %>
-  <p>----------------</p>
+<%= link_to user.id, page_path(user.id) %>
+<p>----------------</p>
 <% end %>
 <%= link_to '編集', edit_group_path %>
 <%= link_to '削除', group_path, method: :delete %>
@@ -23,8 +22,30 @@
   <br>title:<%= link_to post.title, group_post_path(@group.id, post.id) %>
   <br>memo:<%= post.description %>
   <br>total price:<%= post.total_price %> 円</p>
-  <%= link_to '編集', edit_group_post_path(@group.id, post.id) %>
-  <%= link_to '削除', group_post_path(@group.id, post.id), method: :delete %>
-  <p>----------------</p>
+<%= link_to '編集', edit_group_post_path(@group.id, post.id) %>
+<%= link_to '削除', group_post_path(@group.id, post.id), method: :delete %>
+<p>----------------</p>
 <% end %>
 <%= link_to '投稿', new_group_post_path(@group) %>
+
+
+
+<div uk-grid>
+  <div class="uk-width-auto@m">
+    <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
+      <li><a href="#">詳細</a></li>
+      <li><a href="#">メンバー</a></li>
+      <li><a href="#">Item</a></li>
+    </ul>
+  </div>
+  <div class="uk-width-expand@m">
+    <ul id="component-tab-left" class="uk-switcher">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua.</li>
+      <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</li>
+      <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, sed
+        do eiusmod.</li>
+    </ul>
+  </div>
+</div>

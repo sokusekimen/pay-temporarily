@@ -1,11 +1,38 @@
-<nav>
-  <% if user_signed_in? %>
-    <strong><%= link_to current_user.username, root_path %></strong>
-    <%= link_to 'グループ作成', new_group_path %>
-    <%= link_to 'プロフィール変更', edit_user_registration_path %>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'サインアップ', new_user_registration_path %>
-    <%= link_to 'ログイン', new_user_session_path %>
-  <% end %>
+<div class="uk-container uk-container-expand uk-background-muted" uk-sticky>
+<nav class="uk-navbar-container" uk-navbar>
+  <div class="uk-navbar-left">
+    <ul class="uk-navbar-nav">
+      <li class="uk-active"><%= link_to 'Pay-Temporarily', root_path %></li>
+    </ul>
+  </div>
+
+  <div class="uk-navbar-right">
+    <ul class="uk-navbar-nav">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to current_user.username, root_path %>
+          <div class="uk-navbar-dropdown">
+            <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+        </li>
+        <li><%= link_to 'グループ作成', new_group_path %></li>
+        <li>
+          <%= link_to 'フレンド', page_friendships_path(current_user.id) %>
+          <div class="uk-navbar-dropdown">
+            <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li><%= link_to 'リクエスト中', requestings_page_path(current_user.id) %></li>
+              <li><%= link_to 'リクエスト', requests_page_path(current_user.id) %></li>
+            </ul>
+          </div>
+        </li>
+      <% else %>
+        <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
 </nav>
+</div>

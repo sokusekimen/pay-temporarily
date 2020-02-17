@@ -1,10 +1,13 @@
-<% if flash.any? %>
-  <div class="uk-alert-success" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p class="notice"><%= notice %></p>
-  </div>
-  <div class="uk-alert-danger" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p class="alert"><%= alert %></p>
-  </div>
+<% flash.each do |key, value| %>
+  <% if key === "notice" %>
+    <div class="uk-alert-success uk-margin-remove-top" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p class="uk-text-center"><%= value %></p>
+    </div>
+  <% elsif key === "alert" %>
+    <div class="uk-alert-danger  uk-margin-remove-top" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p class="uk-text-center"><%= value %></p>
+    </div>
+  <% end %>
 <% end %>
