@@ -3,12 +3,14 @@
 <h1>グループ編集</h1>
 
 <%= form_for(@group, url: group_path) do |f| %>
-  <%= f.label :name, "グループ名" %><br>
-  <%= f.text_field :name, id: :group_name %><br>
-  <%= f.label :description, "グループの説明" %><br>
-  <%= f.text_area :description, id: :group_description %><br>
+  <fieldset class="uk-fieldset">
+    <%= f.label :name, "グループ名" %><br>
+    <%= f.text_field :name, id: :group_name %><br>
+    <%= f.label :description, "グループの説明" %><br>
+    <%= f.text_area :description, id: :group_description %><br>
 
-  <%= f.label :メンバー %><br>
-  <%= f.collection_check_boxes :user_ids, User.all, :id, :username %><br>
-  <%= f.submit "更新する" %>
+    <%= f.label :メンバー %><br>
+    <%= f.collection_check_boxes :user_ids, User.all, :id, :username %><br>
+    <%= f.submit "更新する" %>
+  </fieldset>
 <% end %>
