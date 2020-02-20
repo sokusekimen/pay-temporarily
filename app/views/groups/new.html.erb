@@ -1,30 +1,29 @@
 <% @page_title = 'グループ新規作成' %>
 
-<h1 class="uk-h1">グループ新規作成</h1>
+<h1 class="uk-h1 uk-text-center">グループ新規作成</h1>
 
 <div class="uk-width-medium uk-padding-small">
   <%= form_for(@group, url: groups_path, html: { class: "uk-form-stacked" }) do |f| %>
-  <fieldset class="uk-fieldset">
-    <div class="uk-margin-small">
-      <%= f.text_field :name, id: :group_name, placeholder: "グループ名", class: "uk-input uk-border-pill" %>
-    </div>
+    <fieldset class="uk-fieldset">
+      <div class="uk-margin-small">
+        <%= f.text_field :name, id: :group_name, placeholder: "グループ名", class: "uk-input uk-border-pill" %>
+      </div>
 
-    <div class="uk-margin-small">
-      <%= f.text_area :description, id: :group_description, placeholder: "グループの説明", class: "uk-textarea", row: "5" %>
-    </div>
+      <div class="uk-margin-small">
+        <%= f.text_area :description, id: :group_description, placeholder: "グループの説明", class: "uk-textarea", rows: "4" %>
+      </div>
 
-    <%= f.hidden_field :owner, id: :group_owner %>
-    <!-- group.owner -->
+      <%= f.hidden_field :owner, id: :group_owner %><!-- group.owner -->
 
-    <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
-      <%= f.collection_check_boxes(:user_ids, User.all, :id, :username, html: { class: "uk-check-box" }) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
-      <% end %>
-    </div>
+      <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
+        <%= f.collection_check_boxes(:user_ids, User.all, :id, :username, include_hidden: false) do |b| %>
+          <%= b.label { b.check_box(class: "uk-checkbox") + ' ' + b.text } %>
+        <% end %>
+      </div>
 
-    <div class="uk-margin-bottom">
-      <%= f.submit "作成する" %>
-    </div>
-  </fieldset>
+      <div class="uk-margin-bottom">
+        <%= f.submit "作成する", class: "uk-button uk-button-primary uk-border-pill uk-width-1-1"  %>
+      </div>
+    </fieldset>
   <% end %>
 </div>

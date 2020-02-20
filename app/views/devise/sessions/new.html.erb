@@ -4,31 +4,32 @@
 
 <div class="uk-width-medium uk-padding-small">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "uk-form-stacked" }) do |f| %>
-  <fieldset class="uk-fieldset">
-    <div class="uk-margin-small">
-      <%= f.text_field :username, autofocus: true, placeholder: "ユーザーネーム", class: "uk-input uk-border-pill" %>
-    </div>
+    <fieldset class="uk-fieldset">
+      <div class="uk-margin-small">
+        <%= f.text_field :username, autofocus: true, placeholder: "ユーザーネーム", class: "uk-input uk-border-pill" %>
+      </div>
 
-    <div class="uk-margin-small">
-      <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "uk-input uk-border-pill" %>
-    </div>
+      <div class="uk-margin-small">
+        <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "uk-input uk-border-pill" %>
+      </div>
 
-    <div class="uk-margin-small">
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "uk-input uk-border-pill" %>
-    </div>
+      <div class="uk-margin-small">
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "uk-input uk-border-pill" %>
+      </div>
 
-    <% if devise_mapping.rememberable? %>
-    <div class="uk-margin-small">
-      <%= f.check_box :remember_me, class: "uk-checkbox" %>
-      <%= f.label :remember_me, "ログインを記録する" %>
-    </div>
-    <% end %>
+      <% if devise_mapping.rememberable? %>
+      <div class="uk-margin-small">
+        <%= f.check_box :remember_me, class: "uk-checkbox" %>
+        <%= f.label :remember_me, "ログインを記録する" %>
+      </div>
+      <% end %>
 
-    <div class="uk-margin-bottom">
-      <%= f.submit "ログイン", class: "uk-button uk-button-primary uk-border-pill uk-width-1-1" %>
-    </div>
-  </fieldset>
+      <div class="uk-margin-bottom">
+        <%= f.submit "ログイン", class: "uk-button uk-button-primary uk-border-pill uk-width-1-1" %>
+      </div>
+    </fieldset>
   <% end %>
+  
   <p class="uk-text-small uk-text-center uk-margin-remove-top">
     <%= render "devise/shared/links" %>
   </p>
