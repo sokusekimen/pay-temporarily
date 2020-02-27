@@ -36,3 +36,4 @@ yarn-debug.log*
 config/environments/development.rb
 
 db/seeds.rb
+.env
