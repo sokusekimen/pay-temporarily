@@ -1,13 +1,13 @@
 <% @page_title = 'リクエスト申請中' %>
 
-<h1>フレンド申請中一覧</h1>
+<h1>フレンド<br class="uk-hidden@s">申請中一覧</h1>
 
 <% @users.each do |user| %>
   <hr>
-  <p><span>email: </span><%= link_to user.email, page_path(user.id) %></p>
-  <% if user.requested?(current_user) %>
-      <p><%=link_to "申請済み", page_friend_requests_path(user.id), method: :delete %></p>
+  <p class="uk-margin-remove-bottom"><span>email: </span><%= link_to user.email, page_path(user.id) %></p>
+  <% if user.requesting?(current_user) %>
+      <p class="uk-margin-remove-bottom uk-margin-small-top"><%=link_to "フレンド申請を削除する", page_friend_requests_path(user.id), method: :delete %></p>
   <% else %>
-      <p><%=link_to "フレンド申請する", page_friend_requests_path(user.id), method: :post %></p>
+      <p class="uk-margin-remove-bottom uk-margin-small-top"><%=link_to "フレンド申請する", page_friend_requests_path(user.id), method: :post %></p>
   <% end %>
 <% end %>

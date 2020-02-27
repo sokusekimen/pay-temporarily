@@ -4,6 +4,7 @@
 
 <% @user_friends.each do |user| %>
   <hr>
-  <p><span>name: </span><%= link_to user.username, page_path(user.id) %></p>
-  <p><span>email: </span><%= link_to user.email, page_path(user.id) %></p>
+  <p class="uk-margin-remove-bottom"><span>name: </span><%= link_to user.username, page_path(user.id) %></p>
+  <p class="uk-margin-remove-bottom uk-margin-small-top"><span>email: </span><%= link_to user.email, page_path(user.id) %></p>
+  <p class="uk-margin-remove-bottom uk-margin-small-top"><%= link_to '削除', page_friendships_path(user), method: :delete %></p>
 <% end %>

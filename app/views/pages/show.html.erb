@@ -1,11 +1,20 @@
 <% @page_title = @user.username %>
 
-<h1>こんにちは</h1>
-<p><%= @user.id %></p>
-<p><%= @user.username %></p>
+<h1><%= @user.username %></h1>
 
-<% if @user.requested?(current_user) %>
-  <p><%=link_to "申請済み", page_friend_requests_path(@user.id), method: :delete %></p>
-<% else %>
-  <p><%=link_to "フレンド申請する", page_friend_requests_path(@user.id), method: :post %></p>
+<% if @user.requesting?(current_user) %>
+    <p><%=link_to "申請済み（申請を削除する）", page_friend_requests_path(@user.id), method: :delete %></p>
+  <% elsif @user.is_requested?(current_user) %>
+    <p><%=link_to "フレンドになる", page_friendships_path(@user.id), method: :post %></p>
+  <% else %>
+    <p><%=link_to "フレンド申請する", page_friend_requests_path(@user.id), method: :post %></p>
 <% end %>
+
+<p class="uk-margin-remove-bottom">所属グループ</p>
+<ul class="uk-list uk-list-divider uk-margin-small-top">
+  <% @user.groups.each do |group| %>
+    <li>
+      <%= link_to group.name, group_path(group.id) %>
+    </li>
+  <% end %>
+</ul>

@@ -1,37 +1,37 @@
 <% @page_title = current_user.username %>
-<h1 class="uk-h1">こんにちは、<%= current_user.username %>さん</h1>
+<h1 class="uk-h1 uk-text-center"><%= current_user.username %>さん</h1>
 
-<button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom">
-  <%= link_to 'グループ作成', new_group_path, class: "uk-link-text uk-link-reset" %>
-</button>
+<%= link_to 'グループ作成', new_group_path, class: "uk-button uk-button-primary uk-width-1-1 uk-border-pill" %>
 
 <ul uk-tab>
   <% @groups.each do |group| %>
-    <li><%= link_to group.name, group_path(group) %></li>
+    <li class="uk-text-center"><%= link_to group.name, group_path(group) %></li>
   <% end %>
 </ul>
 
 <ul class="uk-switcher uk-margin">
   <% @groups.each do |group| %>
-    <li><%= group.description %></li>
+    <li class="uk-text-center">
+      <p>説明：<%= group.description %></p>
+    </li>
   <% end %>
 </ul>
 <ul class="uk-switcher uk-margin">
   <% @groups.each do |group| %>
-    <li>
+    <li class="uk-text-center">
       <p>合計金額：<%= sum_total_price(group.id) %>円</p>
     </li>
   <% end %>
 </ul>
 <ul class="uk-switcher uk-margin">
   <% @groups.each do |group| %>
-    <li>
+    <li class="uk-text-center">
       <p>メンバー数：<%= group.users.count %>人</p>
     </li>
   <% end %>
 </ul>
 <ul class="uk-switcher uk-margin">
   <% @groups.each do |group| %>
-    <li><%= link_to 'グループ詳細へ', group_path(group) %></li>
+    <li class="uk-text-center"><%= link_to 'グループ詳細へ', group_path(group) %></li>
   <% end %>
 </ul>

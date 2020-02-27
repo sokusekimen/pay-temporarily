@@ -1,16 +1,16 @@
 <% @page_title = 'グループ編集' %>
 
-<h1 class="uk-h1 uk-text-center">グループ編集</h1>
+<h1 class="uk-h1 uk-text-center"><%= @page_title %></h1>
 
-<div class="uk-width-medium uk-padding-small">
+<div class="uk-width-medium uk-padding-small uk-align-center">
   <%= form_for(@group, url: group_path, html: { class: "uk-form-stacked" }) do |f| %>
     <fieldset class="uk-fieldset">
       <div class="uk-margin-small">
-        <%= f.text_field :name, id: :group_name, placeholder: "グループ名", class: "uk-input uk-border-pill"  %>
+        <%= f.text_field :name, id: :group_name, placeholder: "グループ名", class: "uk-input uk-border-pill" %>
       </div>
 
       <div class="uk-margin-small">
-        <%= f.text_area :description, id: :group_description, placeholder: "グループの説明", class: "uk-input uk-border-pill", rows: "5"  %>
+        <%= f.text_area :description, id: :group_description, placeholder: "グループの説明", class: "uk-textarea", rows: "4" %>
       </div>
 
       <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
@@ -18,9 +18,9 @@
           <%= b.label { b.check_box(class: "uk-checkbox") + ' ' + b.text } %>
         <% end %>
       </div>
-      
+
       <div class="uk-margin-bottom">
-        <%= f.submit "更新する", class: "uk-button uk-button-primary uk-border-pill uk-width-1-1"  %>
+        <%= f.submit "更新する", class: "uk-button uk-button-primary uk-border-pill uk-width-1-1" %>
       </div>
     </fieldset>
   <% end %>

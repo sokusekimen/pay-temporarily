@@ -16,8 +16,12 @@ class User < ApplicationRecord
   has_many :friendships, class_name: "Friendship", foreign_key: :user_id, dependent: :delete_all
   has_many :friends, through: :friendships, source: :friend
 
-  def requested?(user)
+  def requesting?(user)
     passive_requests.find_by(from_user: user.id).present?
+  end
+
+  def is_requested?(user)
+    active_requests.find_by(to_user: user.id).present?
   end
 
 end

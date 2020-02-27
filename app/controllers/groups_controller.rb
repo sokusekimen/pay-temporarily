@@ -19,25 +19,25 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to @group, notice: 'グループ作成ができました'
+      redirect_to @group, notice: 'グループ作成ができました。'
     else
-      render :new, alert: 'グループ作成ができませんでした'
+      render :new, alert: 'グループ作成ができませんでした。'
     end
   end
 
   def update
     if @group.update(group_params)
-      redirect_to @group, notice: 'グループの更新できました'
+      redirect_to @group, notice: 'グループの更新ができました。'
     else
-      render :edit, alert: 'グループの更新できませんでした'
+      render :edit, alert: 'グループの更新ができませんでした。'
     end
   end
 
   def destroy
     if @group.destroy
-      redirect_to root_path, notice: 'グループの削除できました'
+      redirect_to root_path, notice: 'グループの削除ができました。'
     else
-      redirect_to root_path, alert: 'グループの削除できませんでした'
+      redirect_to root_path, alert: 'グループの削除ができませんでした。'
     end
   end
 

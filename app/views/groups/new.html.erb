@@ -1,8 +1,8 @@
 <% @page_title = 'グループ新規作成' %>
 
-<h1 class="uk-h1 uk-text-center">グループ新規作成</h1>
+<h1 class="uk-h1 uk-text-center"><%= @page_title %></h1>
 
-<div class="uk-width-medium uk-padding-small">
+<div class="uk-width-medium uk-padding-small uk-align-center">
   <%= form_for(@group, url: groups_path, html: { class: "uk-form-stacked" }) do |f| %>
     <fieldset class="uk-fieldset">
       <div class="uk-margin-small">
@@ -22,7 +22,7 @@
       </div>
 
       <div class="uk-margin-bottom">
-        <%= f.submit "作成する", class: "uk-button uk-button-primary uk-border-pill uk-width-1-1"  %>
+        <%= f.submit "作成する", class: "uk-button uk-button-primary uk-border-pill uk-width-1-1" %>
       </div>
     </fieldset>
   <% end %>

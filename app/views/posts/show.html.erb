@@ -1,8 +1,10 @@
-<% @page_title = '投稿詳細' %>
-
-<h1>Posts#show</h1>
-<p><%= @post.title %></p>
-<p><%= @post.description %></p>
-<p><%= @post.total_price %> 円</p>
-<%= link_to '編集', edit_group_post_path %>
-<%= link_to '削除', group_post_path, method: :delete %>
+<% @page_title = '立て替え詳細' %>
+<h1 class="uk-h1 uk-text-center"><%= @post.title %></h1>
+<hr>
+<p>説明： <%= @post.description %></p>
+<p>立て替え金額： <%= @post.total_price %>円</p>
+<div class="uk-margin-small-top">
+  <%= link_to '編集', edit_group_post_path, class: "uk-button uk-button-default uk-border-pill" %>
+  <%= link_to '削除', group_post_path, method: :delete,class: "uk-button uk-button-danger uk-border-pill" %>
+</div>
+<p class="uk-text-center"><%= link_to 'グループページへ', group_path(params[:group_id]) %></p>

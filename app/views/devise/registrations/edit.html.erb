@@ -1,8 +1,8 @@
 <% @page_title = 'ユーザー情報編集' %>
 
-<h1 class="uk-h1 uk-text-center">ユーザー情報編集</h1>
+<h1 class="uk-h1 uk-text-center"><%= @page_title %></h1>
 
-<div class="uk-width-large uk-padding-small">
+<div class="uk-width-large@m uk-width-medium@s uk-padding-small uk-align-center">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "uk-form-stacked" }) do |f| %>
   <fieldset class="uk-fieldset">
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -41,7 +41,7 @@
 </div>
 
 <h2 class="uk-h2 uk-text-small uk-margin-small uk-text-center uk-heading-line"><span>アカウント削除</span></h2>
-<div class="uk-text-center">
+<div class=" uk-padding-small uk-padding-remove-top uk-text-center">
   <%= button_to "削除する", registration_path(resource_name), data: { confirm: "アカウントを削除しますか?" }, method: :delete, class: "uk-button uk-button-danger uk-button-small uk-border-pill uk-width-1-1" %>
   <p><%= link_to "戻る", :back %></p>
 </div>
