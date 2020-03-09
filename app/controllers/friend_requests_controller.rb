@@ -5,20 +5,23 @@ class FriendRequestsController < ApplicationController
   def create
     request = current_user.active_requests.build(to_user_id: params[:page_id])
     request.save
-    redirect_to requestings_page_path(current_user.id), notice: 'フレンド申請しました。'
+    flash.now[:notice] = 'フレンド申請しました。'
+    redirect_to requestings_page_path(current_user.id)
   end
 
   def destroy
     request = current_user.active_requests.find_by(to_user_id: params[:page_id])
     request.destroy
-    redirect_to requestings_page_path(current_user.id), notice: '申請を削除しました。'
+    flash.now[:notice] = '申請を削除しました。'
+    redirect_to requestings_page_path(current_user.id)
   end
 
   private
   def is_not_friend
     friend = Friendship.find_by(friend_id: params[:page_id])
     unless friend.nil?
-      redirect_to root_path, notice: 'すでに友達です。'
+      flash.now[:notice] = 'すでに友達です。'
+      redirect_to root_path
     end
   end
 end

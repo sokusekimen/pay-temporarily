@@ -4,6 +4,7 @@
 
 <div class="uk-width-medium uk-padding-small uk-align-center">
   <%= form_for(@group, url: groups_path, html: { class: "uk-form-stacked" }) do |f| %>
+    <%= render "shared/error", model: f.object %>
     <fieldset class="uk-fieldset">
       <div class="uk-margin-small">
         <%= f.text_field :name, id: :group_name, placeholder: "グループ名", class: "uk-input uk-border-pill" %>
