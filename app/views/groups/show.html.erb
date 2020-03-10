@@ -32,13 +32,17 @@
       </ul>
     </li>
     <li>
-      <% @posts.each do |post| %>
-        <div class="uk-card uk-card-small uk-card-default uk-card-body uk-margin-small-bottom">
-          <p class="uk-margin-remove-bottom">title: <%= link_to post.title, group_post_path(@group.id, post.id) %></p>
-          <p class="uk-margin-remove-bottom uk-margin-small-top">memo: <%= post.description %></p>
-          <p class="uk-margin-remove-bottom uk-margin-small-top">total price: <%= post.total_price %>円</p>
-          <p class="uk-margin-remove-bottom uk-margin-small-top">created at: <%= post.created_at %></p>
-        </div>
+      <% if @posts.present? %>
+        <% @posts.each do |post| %>
+          <div class="uk-card uk-card-small uk-card-default uk-card-body uk-margin-small-bottom">
+            <p class="uk-margin-remove-bottom">title: <%= link_to post.title, group_post_path(@group.id, post.id) %></p>
+            <p class="uk-margin-remove-bottom uk-margin-small-top">memo: <%= post.description %></p>
+            <p class="uk-margin-remove-bottom uk-margin-small-top">total price: <%= post.total_price %>円</p>
+            <p class="uk-margin-remove-bottom uk-margin-small-top">created at: <%= post.created_at %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="uk-text-center uk-text-meta">投稿はありません</p>
       <% end %>
     </li>
   </ul>

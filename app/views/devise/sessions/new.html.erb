@@ -6,11 +6,7 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "uk-form-stacked" }) do |f| %>
     <fieldset class="uk-fieldset">
       <div class="uk-margin-small">
-        <%= f.text_field :username, autofocus: true, placeholder: "ユーザーネーム", class: "uk-input uk-border-pill" %>
-      </div>
-
-      <div class="uk-margin-small">
-        <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "uk-input uk-border-pill" %>
+        <%= f.text_field :login, autocomplete: "login", placeholder: "ユーザーネームorメールアドレス", class: "uk-input uk-border-pill" %>
       </div>
 
       <div class="uk-margin-small">

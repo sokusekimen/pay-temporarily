@@ -22,31 +22,31 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.group_id = params[:group_id]
     if @post.save
-      flash.now[:notice] = '作成ができました'
+      flash[:notice] = '作成ができました'
       redirect_to group_post_path(@post.group_id, @post.id)
     else
-      flash.now[:alert] = '作成ができませんでした'
+      flash[:alert] = '作成ができませんでした'
       render :new
     end
   end
 
   def update
     if @post.update(post_params)
-      flash.now[:notice] = '更新できました'
+      flash[:notice] = '更新できました'
       redirect_to group_post_path(@post.group_id, @post.id)
     else
-      flash.now[:alert] = '更新できませんでした'
+      flash[:alert] = '更新できませんでした'
       render :edit
     end
   end
 
   def destroy
     if @post.destroy
-      flash.now[:notice] = '削除できました'
-      redirect_to root_path
+      flash[:alert] = '削除できました'
+      redirect_to group_path(@post.group_id)
     else
-      flash.now[:alert] = '削除できませんでした'
-      redirect_to root_path
+      flash[:alert] = '削除できませんでした'
+      redirect_to group_post_path(@post.group_id, @post.id)
     end
   end
 

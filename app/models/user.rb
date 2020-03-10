@@ -1,10 +1,16 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, 
-  :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable
+  :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable, :authentication_keys => [:login]
   # :confirmable
 
-  has_many :posts, dependent: :delete_all
+  attr_accessor :login
 
+  validates :username,
+  uniqueness: { case_sensitive: :false },
+  length: { minimum: 3, maximum: 25 }
+  
+  has_many :posts, dependent: :delete_all
+  
   has_many :group_users, dependent: :delete_all
   has_many :groups, through: :group_users
 
@@ -22,6 +28,15 @@ class User < ApplicationRecord
 
   def is_requested?(user)
     active_requests.find_by(to_user: user.id).present?
+  end
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["username = :value OR lower(email) = lower(:value)", { :value => login }]).first
+    else
+      where(conditions).first
+    end
   end
 
 end
