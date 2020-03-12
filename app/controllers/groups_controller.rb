@@ -19,10 +19,10 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      flash.now[:notice] = 'グループ作成ができました。'
+      flash[:notice] = 'グループ作成ができました。'
       redirect_to @group
     else
-      flash.now[:alert] = 'グループ作成ができませんでした。'
+      flash[:alert] = 'グループ作成ができませんでした。'
       render :new
     end
   end
@@ -31,17 +31,17 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to @group, notice: 'グループの更新ができました。'
     else
-      flash.now[:alert] = 'グループの更新ができませんでした。'
+      flash[:alert] = 'グループの更新ができませんでした。'
       render :edit
     end
   end
 
   def destroy
     if @group.destroy
-      flash.now[:notice] = 'グループの削除ができました。'
+      flash[:notice] = 'グループの削除ができました。'
       redirect_to root_path
     else
-      flash.now[:alert] = 'グループの削除ができませんでした。'
+      flash[:alert] = 'グループの削除ができませんでした。'
       redirect_to root_path
     end
   end

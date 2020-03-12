@@ -3,7 +3,7 @@
 <h1 class="uk-h1 uk-text-center"><%= @page_title %></h1>
 
 <div class="uk-width-medium uk-padding-small uk-align-center">
-  <%= form_for(@group, url: groups_path, html: { class: "uk-form-stacked" }) do |f| %>
+  <%= form_with(model: @group, url: groups_path, html: { class: "uk-form-stacked" }) do |f| %>
     <%= render "shared/error", model: f.object %>
     <fieldset class="uk-fieldset">
       <div class="uk-margin-small">

@@ -10,20 +10,20 @@ class FriendshipsController < ApplicationController
 
   def create
     if @from_friendship.save && @to_friendship.save && @request.destroy
-      flash.now[:notice] = '友達になりました。'
+      flash[:notice] = '友達になりました。'
       redirect_to page_friendships_path(current_user.id)
     else
-      flash.now[:alert] = '失敗しました。'
+      flash[:alert] = '失敗しました。'
       redirect_to 'page#requests'
     end
   end
 
   def destroy
     if @from_friendship.destroy && @to_friendship.destroy
-      flash.now[:notice] = '友達から削除しました。'
+      flash[:notice] = '友達から削除しました。'
       redirect_to page_friendships_path(current_user.id), notice: '友達から削除しました。'
     else
-      flash.now[:alert] = '失敗しました。'
+      flash[:alert] = '失敗しました。'
       redirect_to 'page#requests'
     end
   end
