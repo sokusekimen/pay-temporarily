@@ -17,7 +17,7 @@
     <%= f.hidden_field :owner, id: :group_owner %>
     <!-- group.owner -->
 
-    <div class="uk-margin-small uk-flex uk-flex-column form_selectMember-scrollbar">
+    <div class="uk-margin-small uk-flex uk-flex-column form-selectMember" id="selectmember">
       <%= f.collection_check_boxes(:user_ids, User.all, :id, :username, include_hidden: false) do |b| %>
       <%= b.label { b.check_box(class: "uk-checkbox") + ' ' + b.text } %>
       <% end %>
