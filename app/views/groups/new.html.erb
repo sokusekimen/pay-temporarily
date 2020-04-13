@@ -3,7 +3,7 @@
 <h1 class="uk-h1 uk-text-center"><%= @page_title %></h1>
 
 <div class="uk-width-medium uk-padding-small uk-align-center">
-  <%= form_with(model: @group, url: groups_path, html: { class: "uk-form-stacked" }) do |f| %>
+  <%= form_with(model: @group, url: groups_path, html: { class: "uk-form-stacked" }, local: true) do |f| %>
   <%= render "shared/error", model: f.object %>
   <fieldset class="uk-fieldset">
     <div class="uk-margin-small">
@@ -17,7 +17,7 @@
     <%= f.hidden_field :owner, id: :group_owner %>
     <!-- group.owner -->
 
-    <div class="uk-margin-small uk-flex uk-flex-column form-selectMember" id="selectmember">
+    <div class="uk-margin-small uk-flex uk-flex-column form_select-member" id="selectmember">
       <%= f.collection_check_boxes(:user_ids, User.all, :id, :username, include_hidden: false) do |b| %>
       <%= b.label { b.check_box(class: "uk-checkbox") + ' ' + b.text } %>
       <% end %>

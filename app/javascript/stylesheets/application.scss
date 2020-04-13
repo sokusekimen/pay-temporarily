@@ -1,16 +1,29 @@
-.uk-navbar-nav {
-  li {
-    a {
-      text-transform: none;
-    }
+$bp_m: 960px;
+$bp_l: 1600px;
+
+@mixin bg-up_m {
+  @media (min-width: ($bp_m)) {
+    @content;
   }
 }
 
+@mixin bp-up_l {
+  @media (min-width: ($bp_l)) {
+    @content;
+  }
+}
+
+.uk-navbar-nav {
+    & .textTn {
+      text-transform: none;
+    }
+  }
+
 .form {
-  &-selectMember {
+  &_select-member {
     border: solid 1px #e5e5e5;
     padding: 5px;
-    &._scrollbar {
+    &.scrollbar {
       height: 95px;
       overflow: auto;
       &::-webkit-scrollbar{
@@ -25,6 +38,27 @@
         border-radius: 10px;
         box-shadow:0 0 0 1px rgba(255, 255, 255, .3);
       }
+    }
+  }
+}
+
+.user-index_tab{
+  &-area {
+    overflow-x: auto;
+    width: 300px;
+    padding-bottom: 15px;
+    @include bg-up_m {
+      width: auto;
+    };
+    @include bp-up_l {
+      padding-bottom: 0;
+    };
+  }
+  &-item {
+    display: inline-block;
+    white-space: nowrap;
+    & li{
+      display: inline-block;
     }
   }
 }

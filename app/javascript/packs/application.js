@@ -1,7 +1,6 @@
 'use strict';
 
 require("@rails/ujs").start()
-// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
@@ -15,7 +14,7 @@ window.onload = () => {
   if(getSelectMember){
     const childElementCount = getSelectMember.childElementCount;
     if(childElementCount >4){
-      getSelectMember.classList.add('_scrollbar');
+      getSelectMember.classList.add('scrollbar');
     }
   }
 }
