@@ -5,7 +5,7 @@
 
 <% if @groups.present? %>
   <div class="user-index_tab-area">
-    <ul uk-tab uk-switcher="connect: .connect" class="user-index_tab-item uk-margin-remove-bottom">
+    <ul uk-tab uk-switcher="connect: .connect" class="user-index_tab-item textTn uk-margin-remove-bottom">
       <% @groups.each do |group| %>
         <li class="uk-text-center"><%= link_to group.name, group_path(group) %></li>
       <% end %>
