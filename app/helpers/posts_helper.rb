@@ -9,6 +9,6 @@ module PostsHelper
     group = Group.find_by(id: id)
     group_user_count = group.users.count
     group_total_price = sum_total_price(id)
-    return group_total_price / group_user_count
+    return group_total_price.to_f / group_user_count.to_f
   end
 end

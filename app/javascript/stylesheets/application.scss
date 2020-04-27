@@ -2,17 +2,18 @@ $bp_m: 960px;
 $bp_l: 1600px;
 
 @mixin bg-up_m {
-  @media (min-width: ($bp_m)) {
+  @media screen and (min-width: ($bp_m)) {
     @content;
   }
 }
 
 @mixin bp-up_l {
-  @media (min-width: ($bp_l)) {
+  @media screen and (min-width: ($bp_l)) {
     @content;
   }
 }
 
+// init
 
 .textTn {
   & li {
@@ -53,14 +54,9 @@ $bp_l: 1600px;
   &-area {
     overflow-x: auto;
     width: 300px;
-    padding-bottom: 15px;
 
     @include bg-up_m {
       width: auto;
-    }
-
-    @include bp-up_l {
-      padding-bottom: 0;
     }
   }
 
